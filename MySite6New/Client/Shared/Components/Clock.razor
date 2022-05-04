@@ -1,0 +1,46 @@
+﻿@implements IAsyncDisposable
+
+<div class="d-flex justify-content-center align-content-center">
+	<div style="background-color: lightgray; color: green; padding-left: 5px; padding-right: 5px;">
+		<h1> @string.Format("{0:00}", currentTime.Hour) : @string.Format("{0:00}", currentTime.Minute) : @string.Format("{0:00}", currentTime.Second)</h1>
+	</div>
+	@if (MostraData)
+	{
+		<div style="background-color: lightgray; color: green; padding-left: 5px; padding-right: 5px; text-align: center;">
+			<span>@currentTime.ToString("dddd")</span>
+			<br />
+			<span>@currentTime.ToString("dd MMMM yyyy")</span>
+		</div>
+	}
+</div>
+@code {
+	[Parameter] public bool MostraData { get; set; }
+
+	System.Threading.Timer timer;
+	//double hr, min, sec;
+	private DateTime currentTime;
+
+	private void SetClock(object stateInfo)
+	{
+		currentTime = DateTime.Now;
+		//var time = DateTime.Now;
+		//hr = time.Hour;
+		//min = time.Minute;
+		//sec = time.Second;
+		StateHasChanged(); 
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await base.OnInitializedAsync();
+
+		SetClock(null);
+
+		timer = new System.Threading.Timer(SetClock, new System.Threading.AutoResetEvent(false), 10, 10); // 10 milliseconds
+	}
+
+    public ValueTask DisposeAsync() 
+    { 
+        return timer.DisposeAsync(); 
+    }
+}

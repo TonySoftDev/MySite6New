@@ -1,0 +1,41 @@
+﻿	<div class="serviceBox">
+		@if(showGoto)
+		{
+			<span class="active">Attivo</span>
+		}
+		<div class="icon" style="background:@BackgroundColor;">
+			@ChildContent
+		</div>
+		<div class="contentSB">
+			<h2>@Title</h2>
+			<p>@Description</p>
+			@if(showGoto)
+			{
+				<a href="@DestinationRoute" class="float-end" title="Vai a">
+					<i class="fas fa-arrow-alt-circle-right"></i>
+				</a>
+			}
+		</div>
+	</div>
+
+
+@code {
+	[Parameter] public RenderFragment? ChildContent { get; set; }
+	[Parameter] public string? Title { get; set; }
+	[Parameter] public string? Description { get; set; }
+	[Parameter] public string? DestinationRoute { get; set; }
+	[Parameter] public string? BackgroundColor { get; set; }
+
+	private bool showGoto = false;
+
+	protected override void OnParametersSet()
+	{
+		showGoto = !string.IsNullOrEmpty(DestinationRoute);
+
+		if(string.IsNullOrEmpty(Description))
+		{
+			Description = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio animi earum accusamus, qui eaque laborum.";
+		}
+	}
+
+}

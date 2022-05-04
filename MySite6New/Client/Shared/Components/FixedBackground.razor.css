@@ -1,0 +1,19 @@
+﻿.bgbody {
+    width: 100%;
+    height: 91vh;
+
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.6) 0%, rgba(92, 77, 66, 0.6) 100%), url("assets/img/publicbackgrounds/001.jpg");
+    /*background: linear-gradient(to bottom, rgba(178,34,34, 0.1), rgba(178,34,34, 1)), url("assets/img/publicbackgrounds/001.jpg");*/
+    /*background: url("assets/img/publicbackgrounds/001.jpg") no-repeat center center fixed;*/
+
+    background-size: cover;
+    position:relative;
+    z-index:0;
+}
+/*    .bgbody:hover {
+        background: linear-gradient(to bottom, rgba(178,34,34, 0.1), rgba(178,34,34, 1)), url("assets/img/publicbackgrounds/001.jpg");
+        transition: 1s;
+
+    }
+*//*background: linear-gradient(top left, rgba(178,34,34, 0.1), rgba(75, 107, 175, 1)), url("assets/img/publicbackgrounds/001.jpg");*/
+/*background: url("assets/img/publicbackgrounds/001.jpg") no-repeat center center fixed;*/

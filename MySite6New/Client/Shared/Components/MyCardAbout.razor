@@ -1,0 +1,22 @@
+﻿<div class="card shadow-no-hover mb-1">
+    <img src="@ImgSrc" class="card-img-top" />
+
+    <div class="card-body">
+        <h3 class="card-title fw-bold">@Title</h3>
+
+        <p class="card-text">
+            @ChildContent
+        </p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string? ImgSrc { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter] 
+    public RenderFragment? ChildContent {get;set;}
+}

@@ -1,0 +1,24 @@
+﻿.shadow {
+    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.4) !important;
+}
+
+.shadow-no-hover {
+    box-shadow: 0 0.15rem 0.4rem rgba(0, 0, 0, 0.5) !important;
+}
+
+.shadow:hover {
+    box-shadow: 0 0.15rem 0.4rem rgba(0, 0, 0, 0.8) !important;
+}
+
+.card {
+    color: black;
+    border-radius: 0px;
+    max-width: 600px;
+}
+
+.card img
+{
+    width: 50%;
+    height:50%;
+    position: center;
+}

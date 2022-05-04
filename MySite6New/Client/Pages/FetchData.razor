@@ -1,0 +1,60 @@
+﻿@page "/fetchdata"
+@using MySite6New.Shared
+@inject HttpClient Http
+
+<PageTitle>Weather forecast</PageTitle>
+
+<h1 class="mytitle">Weather forecast</h1>
+
+<div>
+
+    @if (forecasts == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Date</th>
+                    <th>Min (C)</th>
+                    <th>Max (C)</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var forecast in forecasts)
+                {
+                    <tr>
+                        <td>@forecast.City</td>
+                        <td>@forecast.Date.ToShortDateString()</td>
+                        <td>@forecast.TemperatureMin</td>
+                        <td>@forecast.TemperatureMax</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
+
+<button type="button" class="btn btn-primary" @onclick="LeggiDati">
+    <i class="fas fa-sync"></i>&nbsp;Aggiorna
+</button>
+
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LeggiDati();
+    }
+
+    private async Task LeggiDati()
+    {
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+    }
+}

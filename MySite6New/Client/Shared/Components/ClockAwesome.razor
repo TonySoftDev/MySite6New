@@ -1,0 +1,63 @@
+﻿@implements IAsyncDisposable
+
+<div class="mainContainer">
+	<div class="clockcontainer">
+		<div class="clock">
+			<div class="circle" style="@styleSeconds" id="sc"><i></i></div>
+			<div class="circle circle2" style="@styleMinutes" id="mn"><i></i></div>
+			<div class="circle circle3" style="@styleHours" id="hr"><i></i></div>
+			<span style="--i:1;"><b>1</b></span>
+			<span style="--i:2;"><b>2</b></span>
+			<span style="--i:3;"><b>3</b></span>
+			<span style="--i:4;"><b>4</b></span>
+			<span style="--i:5;"><b>5</b></span>
+			<span style="--i:6;"><b>6</b></span>
+			<span style="--i:7;"><b>7</b></span>
+			<span style="--i:8;"><b>8</b></span>
+			<span style="--i:9;"><b>9</b></span>
+			<span style="--i:10;"><b>10</b></span>
+			<span style="--i:11;"><b>11</b></span>
+			<span style="--i:12;"><b>12</b></span>
+				
+		</div>
+		<div id="time">
+			<div id="hour" style="--clr:#ff2972">@string.Format("{0:00}", currentTime.Hour)</div>
+			<div id="minutes" style="--clr:#fee800">@string.Format("{0:00}", currentTime.Minute)</div>
+			<div id="seconds" style="--clr:#04fc43">@string.Format("{0:00}", currentTime.Second)</div>
+		</div>
+	</div>
+</div>
+
+@code 
+{
+	System.Threading.Timer timer;
+	//double hr, min, sec;
+	private DateTime currentTime;
+	
+	private string styleHours = "--clr:#ff2972";
+	private string styleMinutes = "--clr:#fee800";
+	private string styleSeconds = "--clr:#04fc43";
+
+	private void SetClock(object stateInfo)
+	{
+		currentTime = DateTime.Now;
+		styleHours = $"--clr:#ff2972; transform: rotateZ({currentTime.Hour*30}deg);";
+		styleMinutes = $"--clr:#fee800; transform: rotateZ({currentTime.Minute*6}deg);";
+		styleSeconds = $"--clr:#04fc43; transform: rotateZ({currentTime.Second*6}deg);";
+		StateHasChanged(); 
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await base.OnInitializedAsync();
+
+		SetClock(null);
+
+		timer = new System.Threading.Timer(SetClock, new System.Threading.AutoResetEvent(false), 10, 10); // 10 milliseconds
+	}
+
+    public ValueTask DisposeAsync() 
+    { 
+        return timer.DisposeAsync(); 
+    }
+}

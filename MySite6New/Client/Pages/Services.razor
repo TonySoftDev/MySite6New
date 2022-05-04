@@ -1,0 +1,81 @@
+﻿@page "/services"
+@page "/services/{idtoshow:int}"
+
+@inject NavigationManager navManager
+
+<PageTitle>Services</PageTitle>
+
+<h3 class="mytitle" style="color:#ffdd1c;">SERVICES</h3>
+
+@if (IdToShow == 0)
+{
+	<div class="containerServices">
+
+		<MyServiceBox Title="Password generator" Description="Generatore di password con varie opzioni di scelta (caratteri, lunghezza, quantità)."
+					  DestinationRoute="/services/4" BackgroundColor="#4eb7ff">
+			<i class="fas fa-key"></i>
+		</MyServiceBox>
+
+		<MyServiceBox Title="Development" Description="Il classico componente Counter" DestinationRoute="/services/2" BackgroundColor="#fd6494">
+			<i class="fas fa-laptop-code"></i>
+		</MyServiceBox>
+
+		<MyServiceBox Title="Weather Forecast" Description="Personalizzazione del classico componente del template WASM" 
+					  DestinationRoute="/services/3" BackgroundColor="#43f390">
+			<i class="fas fa-thermometer-full"></i>
+		</MyServiceBox>
+
+		<MyServiceBox Title="Awesome clock" Description="Un orologio più carino" DestinationRoute="/services/1" BackgroundColor="#ffb508">
+			<i class="fas fa-clock"></i>
+		</MyServiceBox>
+
+		<MyServiceBox Title="Video Editing" Description="" DestinationRoute="" BackgroundColor="#37ba82">
+			<i class="fas fa-video"></i>
+		</MyServiceBox>
+
+		<MyServiceBox Title="Game Development" Description="" DestinationRoute="" BackgroundColor="#cd57ff">
+			<i class="fas fa-gamepad"></i>
+		</MyServiceBox>
+
+	</div>
+}
+else if(IdToShow==1)
+{
+	<div class="d-flex justify-content-center">
+		<ClockAwesome />
+	</div>	
+}
+else if(IdToShow==2)
+{
+	<Counter />
+}
+else if(IdToShow==3)
+{
+	<FetchData />
+}
+else if(IdToShow==4)
+{
+	<PasswordGenerator />
+}
+
+@if(IdToShow!=0)
+{
+	<hr />
+	<button type="button" class="btn btn-success" @onclick="OnBack">
+		<i class="fas fa-backspace"></i>&nbsp;Torna a Services
+	</button>
+}
+
+@code
+{
+	[Parameter] public int IdToShow { get; set; }
+
+	protected override void OnParametersSet()
+	{
+		var idComponent = IdToShow;
+
+	}
+
+	private void OnBack() => navManager.NavigateTo("/services");
+	
+}
