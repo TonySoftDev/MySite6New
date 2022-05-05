@@ -1,0 +1,11 @@
+﻿    <li style="@StyleString">
+        <a href="@UrlRouting" data-text="@LabelEnd">@LabelStart</a>
+    </li>
+
+@code {
+    [Parameter] public string? LabelStart { get; set; }
+    [Parameter] public string? LabelEnd { get; set; }
+    [Parameter] public string? UrlRouting { get; set; }
+    [Parameter] public string? StyleString { get; set; }
+
+}

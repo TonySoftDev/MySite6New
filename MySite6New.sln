@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySite6New.Server", "MySite6New\Server\MySite6New.Server.csproj", "{9C43CDE2-2AA1-469B-A690-4C811A1081AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySite6New.Server", "MySite6New\Server\MySite6New.Server.csproj", "{9C43CDE2-2AA1-469B-A690-4C811A1081AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySite6New.Client", "MySite6New\Client\MySite6New.Client.csproj", "{60664C04-DC7C-4A66-A7E8-AD04438EFB93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySite6New.Client", "MySite6New\Client\MySite6New.Client.csproj", "{60664C04-DC7C-4A66-A7E8-AD04438EFB93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySite6New.Shared", "MySite6New\Shared\MySite6New.Shared.csproj", "{880DABE1-E903-43FA-BD98-72D15B2474B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySite6New.Shared", "MySite6New\Shared\MySite6New.Shared.csproj", "{880DABE1-E903-43FA-BD98-72D15B2474B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordGenerator", "PasswordGenerator\PasswordGenerator.csproj", "{791F601D-46F4-4295-B669-472657106B4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordGenerator", "PasswordGenerator\PasswordGenerator.csproj", "{791F601D-46F4-4295-B669-472657106B4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

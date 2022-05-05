@@ -1,0 +1,8 @@
+﻿ul {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    top: 10px;
+    /*border: solid white 1px;*/
+}
