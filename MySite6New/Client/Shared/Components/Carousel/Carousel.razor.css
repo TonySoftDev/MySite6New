@@ -1,0 +1,32 @@
+﻿.carousel, .item {
+    /*border: solid aqua;*/
+}
+
+.carousel {
+    
+}
+
+/*.carousel-inner img {
+    width: 50%;
+    height: 70vh;
+    object-fit: scale-down;
+}
+
+.carousel-caption {
+    border: solid green;
+    position: relative;
+    left: 10px;
+}*/
+
+.carousel-indicators {
+    /*border: solid yellow;*/
+}
+
+.carousel-control-prev {
+    /*border: solid red;*/
+}
+
+.carousel-control-next {
+    /*border: solid red;*/
+}
+

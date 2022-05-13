@@ -24,10 +24,10 @@ namespace MySite6New.Server.Controllers
             "Viterbo"
         };
 
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        //private static readonly string[] Summaries = new[]
+        //{
+        //    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        //};
 
         private readonly ILogger<WeatherForecastController> _logger;
 

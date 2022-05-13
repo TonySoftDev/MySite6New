@@ -1,6 +1,7 @@
 ﻿@page "/services"
 @page "/services/{idtoshow:int}"
 
+@inject HttpClient Http
 @inject NavigationManager navManager
 
 <PageTitle>Services</PageTitle>
@@ -29,8 +30,8 @@
 			<i class="fas fa-clock"></i>
 		</MyServiceBox>
 
-		<MyServiceBox Title="Video Editing" Description="" DestinationRoute="" BackgroundColor="#37ba82">
-			<i class="fas fa-video"></i>
+		<MyServiceBox Title="Carousel" Description="Test di personalizzazione del componente Carousel di Bootstrap" DestinationRoute="/services/5" BackgroundColor="#37ba82">
+			<i class="far fa-images"></i>
 		</MyServiceBox>
 
 		<MyServiceBox Title="Game Development" Description="" DestinationRoute="" BackgroundColor="#cd57ff">
@@ -57,6 +58,10 @@ else if(IdToShow==4)
 {
 	<PasswordGenerator />
 }
+else if(IdToShow==5)
+{
+	<Carousel Model="@carouseModel"/>
+}
 
 @if(IdToShow!=0)
 {
@@ -70,10 +75,21 @@ else if(IdToShow==4)
 {
 	[Parameter] public int IdToShow { get; set; }
 
+	private CarouselData? carouseModel;
+
 	protected override void OnParametersSet()
 	{
 		var idComponent = IdToShow;
 
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		var result = await Http.GetFromJsonAsync<CarouselData>("DataMisc/Carousel");
+		if(result!=null)
+		{
+			carouseModel = result;
+		}
 	}
 
 	private void OnBack() => navManager.NavigateTo("/services");

@@ -1,5 +1,31 @@
 ﻿@page "/"
+@inject HttpClient Http
 
 <PageTitle>CSS Experiments</PageTitle>
 
-<h1 style="display: flex; justify-content: center; align-items: center;">WELCOME</h1>
+
+@if(carouseModel==null)
+{
+	<LoadingAwesome />
+}
+else
+{
+	<Carousel Model="@carouseModel" />
+}
+
+
+
+@code   
+{
+	private CarouselData? carouseModel;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await Task.Delay(3000);
+		var result = await Http.GetFromJsonAsync<CarouselData>("DataMisc/Carousel");
+		if(result!=null)
+		{
+			carouseModel = result;
+		}
+	}
+}

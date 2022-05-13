@@ -1,0 +1,27 @@
+﻿@if(ItemData!.IsActive)
+{
+	<div class="carousel-item active">
+		<img src=@ItemData!.ImageUrl class="d-block w-100">
+			<div class="carousel-caption d-none d-md-block">
+				<h5>@ItemData!.ImageTitle</h5>
+				<p>@ItemData!.ImageDescription</p>
+			</div>
+	</div>
+}
+else
+{
+	<div class="carousel-item">
+		<img src=@ItemData!.ImageUrl class="d-block w-100">
+			<div class="carousel-caption d-none d-md-block">
+				<h5>@ItemData!.ImageTitle</h5>
+				<p>@ItemData!.ImageDescription</p>
+			</div>
+	</div>
+}
+
+
+@code {
+
+	[Parameter] public ItemCarouselModel? ItemData { get; set; }
+
+}

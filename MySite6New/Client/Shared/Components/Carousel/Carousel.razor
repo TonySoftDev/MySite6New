@@ -1,0 +1,80 @@
+﻿@inject IJSRuntime JSRuntime
+
+@*
+	ATTENZIONE: gli attributi data-bs- sono stati aggiunti dalla versione 5.1 di Boostrap come istruzioni di configurazione
+	utilizzando gli stessi nomi dei metodi dell'api del componente
+*@
+<Memo>
+    Passando col mouse sulla galleria si mette in pausa l'autoscrolling (@Model!.MillisecondsInterval millisecondi)
+</Memo>
+<div id="@carouselName" class="@mainClass"  data-bs-ride="carousel" data-bs-wrap="@wrapPsrameter" data-bs-interval="@Model!.MillisecondsInterval" data-bs-pause="hover">
+
+	<div class="carousel-indicators">
+
+		@foreach(var item in Model.ListItems!) //(var i = 0; i < Model.ListItems; i++)
+		{
+			if(item.IsActive)
+			{
+				<button type="button" data-bs-target="@carouselIndicatorName" data-bs-slide-to="@contaItem" class="active" aria-current="true" 
+						aria-label="@item.ImageTitle">
+				</button>
+			}
+			else
+			{
+				<button type="button" data-bs-target="@carouselIndicatorName" data-bs-slide-to="@contaItem" 
+						aria-label="@item.ImageTitle">
+				</button>
+			}
+			contaItem++;
+		}
+		
+	</div>
+
+	<div class="carousel-inner">
+		@foreach (var item in Model.ListItems)
+		{
+			<CarouselItem ItemData=item />
+		}
+	</div>
+
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	</button>
+</div>
+
+@code {
+	[Parameter] public CarouselData? Model { get; set; }
+
+	private string mainClass = "carousel slide";
+	private string wrapPsrameter = "true";
+	private int contaItem = 0;
+
+	const string carouselName = "carouselExampleIndicators"; // ID del carousel come variabile
+	const string carouselIndicatorName = "#carouselExampleIndicators"; // ID per gli indicators
+
+	protected override void OnParametersSet()
+	{
+		if(!Model!.IsSliding)
+		{
+			mainClass = "carousel";
+		}
+		if(!Model.IsCyclingContinous)
+		{
+			wrapPsrameter = "false";
+		}
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+
+		object[] args = { carouselName };
+		
+		// Chiamo la function javascript passando come argument la variabile contenente l'ID del carousel
+		await JSRuntime.InvokeVoidAsync("startCarousel", args);
+	}
+}

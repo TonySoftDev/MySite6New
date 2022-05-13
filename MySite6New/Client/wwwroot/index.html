@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MySite6New</title>
     <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap513/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link href="MySite6New.Client.styles.css" rel="stylesheet" />
+    <!--<script src="css/bootstrap513/js/jquery-3.3.1.min.js"></script>-->
+
 </head>
 
 <body>
@@ -21,6 +23,21 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="css/bootstrap513/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        function startCarousel(carouselId) {
+            var myCarousel = document.getElementById(carouselId);
+            var carousel = new bootstrap.Carousel(myCarousel);
+            carousel.cycle(); // la chiamata a cycle fa partire subito il carousel
+        }
+
+    </script>
+
+
 </body>
 
 </html>
+
+

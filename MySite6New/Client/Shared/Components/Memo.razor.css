@@ -1,0 +1,13 @@
+﻿.memo {
+    box-sizing: border-box;
+    color: aliceblue;
+    display: flex;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    height: 21px;
+    line-height: 21px;
+    margin-bottom: 10px;
+    justify-content: end;
+    text-size-adjust: 100%;
+}
