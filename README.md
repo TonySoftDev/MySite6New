@@ -14,5 +14,5 @@ In questo repository si trova un progetto Blazor Wasm Hosted dedicato alla spert
   - Sidebar, il componente per la barra laterale di navigazione avente per figli dei componenti MenuItem
 
 13/05/2022:
-- Componente LoadingAwesome
+- Componente LoadingAwesome (per il momento è di grandezza fissa ma verrà parametrizzata)
 - Componente Carousel V1: sto cercando di personalizzare e "componentizzare" il Carousel di Bootstrap
