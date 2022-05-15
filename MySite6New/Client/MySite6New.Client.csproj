@@ -8,10 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Shared\Components\ImageGallery\Gallery.razor.css" />
     <None Remove="Shared\Components\LoadingAwesome.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Shared\Components\ImageGallery\Gallery.razor.css" />
     <Content Include="Shared\Components\LoadingAwesome.razor.css" />
   </ItemGroup>
 
