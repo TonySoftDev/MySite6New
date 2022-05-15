@@ -1,32 +1,40 @@
 ﻿<div class="gallery" style="@galleryStyle">
     <div class="gallery__item" style="@paddingTopStyle">
         <input type="radio" id="img-1" checked name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt="" />
+        <img class="gallery__img" src="/assets/gallery/1015-6000x4000.jpg" alt="" />
         <label for="img-1" class="gallery__thumb">
-            <img src="https://picsum.photos/id/1015/150/100.jpg" alt="" />
+            <img src="/assets/gallery/1015-6000x4000.jpg" style="@thumbStyle" alt="" />
         </label>
     </div>
     <div class="gallery__item" style="@paddingTopStyle">
         <input type="radio" id="img-2" name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt="" />
+        <img class="gallery__img" src="/assets/gallery/1039-6945x4635.jpg" alt="" />
         <label for="img-2" class="gallery__thumb">
-            <img src="https://picsum.photos/id/1039/150/100.jpg" alt="" />
+            <img src="/assets/gallery/1039-6945x4635.jpg" style="@thumbStyle" alt="" />
         </label>
     </div>
     <div class="gallery__item" style="@paddingTopStyle">
         <input type="radio" id="img-3" name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt="" />
+        <img class="gallery__img" src="/assets/gallery/1057-6016x4016.jpg" alt="" />
         <label for="img-3" class="gallery__thumb">
-            <img src="https://picsum.photos/id/1057/150/100.jpg" alt="" />
+            <img src="/assets/gallery/1057-6016x4016.jpg" style="@thumbStyle" alt="" />
         </label>
     </div>
     <div class="gallery__item" style="@paddingTopStyle">
         <input type="radio" id="img-4" name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt="" />
+        <img class="gallery__img" src="/assets/gallery/106-2592x1728.jpg" alt="" />
         <label for="img-4" class="gallery__thumb">
-            <img src="https://picsum.photos/id/106/150/100.jpg" alt="" />
+            <img src="/assets/gallery/106-2592x1728.jpg" style="@thumbStyle" alt="" />
         </label>
     </div>
+    <div class="gallery__item" style="@paddingTopStyle">
+        <input type="radio" id="img-5" name="gallery" class="gallery__selector" />
+        <img class="gallery__img" src="/assets/gallery/1019-5472x3648.jpg" alt="" />
+        <label for="img-5" class="gallery__thumb">
+            <img src="/assets/gallery/1019-5472x3648.jpg" style="@thumbStyle" alt="" />
+        </label>
+    </div>
+
 </div>
 
 
@@ -37,13 +45,18 @@
 
     string galleryStyle = string.Empty;
     string paddingTopStyle = string.Empty;
+    //string imgStyle = string.Empty;
+    string thumbStyle = string.Empty;
 
     protected override void OnParametersSet()
     {
         int paddingTop = Convert.ToInt32((double)MaxImageHeight / (double)MaxImageWidth * 100);
+        int thumbWidth = MaxImageWidth * 25 / 100 ;
 
         galleryStyle = $"max-width: {MaxImageWidth}px;"; //padding-top: {paddingTop}%";
         paddingTopStyle = $"padding-top: {paddingTop}%";
+        //imgStyle = $"max-width: {MaxImageWidth}px; max-height:{MaxImageHeight}px; object-fit:contain;";
+        thumbStyle = $"max-width: {thumbWidth}px; object-fit:contain;";
     }
 
 }
