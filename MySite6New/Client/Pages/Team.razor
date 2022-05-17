@@ -1,13 +1,28 @@
 ﻿@page "/team"
+@inject HttpClient Http
 
-@*    <h1>Test del componente loading</h1>
 
+<h3>
+    Fonte delle immagini: <a href="https://picsum.photos/" target="_blank">Lorem Picsum</a>
+</h3> 
+
+@if(listaImmagini==null)
+{
     <LoadingAwesome />
-*@
+}
+else
+{
+    <Gallery ListaImmagini="@listaImmagini" />
+}
 
-<Gallery />
 
 
 @code {
+    private PicsumItem[]? listaImmagini;
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaImmagini = await Http.GetFromJsonAsync<PicsumItem[]>("https://picsum.photos/v2/list?page=1&limit=10");
+    }
 
 }

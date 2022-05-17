@@ -1,62 +1,78 @@
-﻿<div class="gallery" style="@galleryStyle">
-    <div class="gallery__item" style="@paddingTopStyle">
-        <input type="radio" id="img-1" checked name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="/assets/gallery/1015-6000x4000.jpg" alt="" />
-        <label for="img-1" class="gallery__thumb">
-            <img src="/assets/gallery/1015-6000x4000.jpg" style="@thumbStyle" alt="" />
-        </label>
+﻿<div class="d-flex flex-column align-items-center">
+
+    <div style="@galleryStyle">
+        <img src="@imgUrl" />
     </div>
-    <div class="gallery__item" style="@paddingTopStyle">
-        <input type="radio" id="img-2" name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="/assets/gallery/1039-6945x4635.jpg" alt="" />
-        <label for="img-2" class="gallery__thumb">
-            <img src="/assets/gallery/1039-6945x4635.jpg" style="@thumbStyle" alt="" />
-        </label>
-    </div>
-    <div class="gallery__item" style="@paddingTopStyle">
-        <input type="radio" id="img-3" name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="/assets/gallery/1057-6016x4016.jpg" alt="" />
-        <label for="img-3" class="gallery__thumb">
-            <img src="/assets/gallery/1057-6016x4016.jpg" style="@thumbStyle" alt="" />
-        </label>
-    </div>
-    <div class="gallery__item" style="@paddingTopStyle">
-        <input type="radio" id="img-4" name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="/assets/gallery/106-2592x1728.jpg" alt="" />
-        <label for="img-4" class="gallery__thumb">
-            <img src="/assets/gallery/106-2592x1728.jpg" style="@thumbStyle" alt="" />
-        </label>
-    </div>
-    <div class="gallery__item" style="@paddingTopStyle">
-        <input type="radio" id="img-5" name="gallery" class="gallery__selector" />
-        <img class="gallery__img" src="/assets/gallery/1019-5472x3648.jpg" alt="" />
-        <label for="img-5" class="gallery__thumb">
-            <img src="/assets/gallery/1019-5472x3648.jpg" style="@thumbStyle" alt="" />
-        </label>
+
+    <div>
+        @foreach (var item in ListaImmagini!)
+        {
+            decimal ratio = Math.Round(((decimal)item.Width / (decimal)item.Height), 1);
+            if(ratio==(decimal)1.5)
+            {
+                string idImg = $"img-{item.Id}";
+
+                @if(firstThumb)
+                {
+                    <input type="radio" name="selector" checked="checked" id="@idImg" style="opacity: 0;" @onchange="() => ClickSelector(item)"/>
+                    <label for="@idImg" style="@thumbStyleSelected">
+                        <img src="@item.Download_url" alt="" />
+                    </label>
+
+                    firstThumb = false;
+                }
+                else
+                {
+                    <input type="radio" name="selector" id="@idImg" style="opacity: 0;" @onchange="() => ClickSelector(item)"/>
+                    if(item==current)
+                    {
+                        <label for="@idImg" style="@thumbStyleSelected">
+                            <img src="@item.Download_url" alt="" />
+                        </label>
+                    }
+                    else
+                    {
+                        <label for="@idImg" style="@thumbStyleNormal">
+                            <img src="@item.Download_url" alt="" />
+                        </label>
+                    }
+                }
+            }
+        }
     </div>
 
 </div>
 
-
-
 @code {
+    [Parameter] public PicsumItem[]? ListaImmagini { get; set; }
     [Parameter] public int MaxImageWidth { get; set; } = 600;
     [Parameter] public int MaxImageHeight { get; set; } = 400;
 
     string galleryStyle = string.Empty;
-    string paddingTopStyle = string.Empty;
-    //string imgStyle = string.Empty;
-    string thumbStyle = string.Empty;
+    string imgUrl = string.Empty;
+    string thumbStyleNormal = string.Empty;
+    string thumbStyleSelected = string.Empty;
+    bool firstThumb = true;
+    PicsumItem? current = null;
+
+    private void ClickSelector(PicsumItem item)
+    {
+        imgUrl = item.Download_url;
+        current = item;
+    }
 
     protected override void OnParametersSet()
     {
-        int paddingTop = Convert.ToInt32((double)MaxImageHeight / (double)MaxImageWidth * 100);
-        int thumbWidth = MaxImageWidth * 25 / 100 ;
+        if (ListaImmagini != null)
+        {
+            int paddingTop = Convert.ToInt32((double)MaxImageHeight / (double)MaxImageWidth * 100);
+            int thumbWidth = MaxImageWidth * 25 / 100;
 
-        galleryStyle = $"max-width: {MaxImageWidth}px;"; //padding-top: {paddingTop}%";
-        paddingTopStyle = $"padding-top: {paddingTop}%";
-        //imgStyle = $"max-width: {MaxImageWidth}px; max-height:{MaxImageHeight}px; object-fit:contain;";
-        thumbStyle = $"max-width: {thumbWidth}px; object-fit:contain;";
+            galleryStyle = $"max-width: {MaxImageWidth}px;";
+            thumbStyleNormal = $"max-width: {thumbWidth}px; object-fit:contain; padding-top: 6px; margin: 6px;";
+            thumbStyleSelected = $"max-width: {thumbWidth}px; object-fit:contain; padding-top: 6px; margin: 6px; box-shadow: 0 0 0 3px #0be2f6;";
+            ClickSelector(ListaImmagini[0]);
+        }
     }
 
 }

@@ -10,8 +10,8 @@
     align-items: center;
     flex-wrap: wrap;
     min-height: 20vh;
-    min-width: 15%;
-    background: #042104;
+    min-width: 20vw;
+    /*background: #042104;*/
     animation: animateBg 10s linear infinite;
 }
 
