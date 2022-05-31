@@ -8,6 +8,10 @@ In questo repository si trova un progetto Blazor Wasm Hosted dedicato alla spert
 
 # Modifiche al progetto
 
+31/05/2022
+- Spinner iniziale
+- Pagina "Contact": prima versione statica
+
 13/05/2022:
 - Componente LoadingAwesome (visibile nella pagina "TEAM", per il momento è di grandezza fissa ma verrà parametrizzata)
 - Componente Carousel V1: sto cercando di personalizzare e "componentizzare" il Carousel di Bootstrap
