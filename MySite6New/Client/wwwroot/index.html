@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MySite6New</title>
     <base href="/" />
-    <link href="css/bootstrap513/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap513/css/bootstrap.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link href="MySite6New.Client.styles.css" rel="stylesheet" />
@@ -15,7 +15,13 @@
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="spinner-border" role="status" style="width:4em; height: 4em;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
