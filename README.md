@@ -8,6 +8,9 @@ In questo repository si trova un progetto Blazor Wasm Hosted dedicato alla spert
 
 # Modifiche al progetto
 
+18/06/2022
+- Carousel: aggiunta gestione js isolation
+
 31/05/2022
 - Spinner iniziale
 - Pagina "Contact": prima versione statica
