@@ -8,18 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Shared\Components\Carousel\Carousel.razor.css" />
+    <None Remove="Shared\Components\Carousel\Carousel.razor.js" />
     <None Remove="Shared\Components\ImageGallery\Gallery.razor.css" />
     <None Remove="Shared\Components\LoadingAwesome.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Shared\Components\Carousel\Carousel.razor.css" />
+    <Content Include="Shared\Components\Carousel\Carousel.razor.js" />
     <Content Include="Shared\Components\ImageGallery\Gallery.razor.css" />
     <Content Include="Shared\Components\LoadingAwesome.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.4" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>

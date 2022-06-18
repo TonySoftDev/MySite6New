@@ -54,6 +54,8 @@
 	private string wrapPsrameter = "true";
 	private int contaItem = 0;
 
+	private IJSObjectReference? module = null;
+
 	const string carouselName = "carouselExampleIndicators"; // ID del carousel come variabile
 	const string carouselIndicatorName = "#carouselExampleIndicators"; // ID per gli indicators
 
@@ -71,10 +73,15 @@
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-
-		object[] args = { carouselName };
+		if(firstRender)
+		{
+			module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/components/Carousel.js");
+		}
 		
-		// Chiamo la function javascript passando come argument la variabile contenente l'ID del carousel
-		await JSRuntime.InvokeVoidAsync("startCarousel", args);
+		if(module is not null)
+		{
+			await module.InvokeVoidAsync("startCarousel", carouselName);
+		}
+
 	}
 }

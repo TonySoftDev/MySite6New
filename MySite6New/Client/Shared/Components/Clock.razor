@@ -16,11 +16,11 @@
 @code {
 	[Parameter] public bool MostraData { get; set; }
 
-	System.Threading.Timer timer;
+	System.Threading.Timer? timer;
 	//double hr, min, sec;
 	private DateTime currentTime;
 
-	private void SetClock(object stateInfo)
+	private void SetClock(object? stateInfo)
 	{
 		currentTime = DateTime.Now;
 		//var time = DateTime.Now;
@@ -30,9 +30,12 @@
 		StateHasChanged(); 
 	}
 
+
+
 	protected override async Task OnInitializedAsync()
 	{
 		await base.OnInitializedAsync();
+
 
 		SetClock(null);
 
@@ -41,6 +44,6 @@
 
     public ValueTask DisposeAsync() 
     { 
-        return timer.DisposeAsync(); 
+        return timer!.DisposeAsync(); 
     }
 }
