@@ -7,6 +7,9 @@ In questo repository si trova un progetto Blazor Wasm Hosted dedicato alla spert
 - altro (aggiungerò elementi alla lista)
 
 # Modifiche al progetto
+23/06/2022
+- Compotente TextInput: prima prova
+- Pagina Inpus da menu principale
 
 18/06/2022
 - Carousel: aggiunta gestione js isolation
