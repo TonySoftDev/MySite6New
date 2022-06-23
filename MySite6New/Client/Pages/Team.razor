@@ -4,6 +4,7 @@
 
 <h3>
     Gallery ad hoc per le immagini tratte da: <a href="https://picsum.photos/" target="_blank">Lorem Picsum</a>
+    (vengono visualizzate al momento solo immagini con Ratio=1.5 e si può scorrere coi tasti cursore)
 </h3> 
 
 @if(listaImmagini==null)
@@ -18,11 +19,14 @@ else
 
 
 @code {
-    private PicsumItem[]? listaImmagini;
+    //private PicsumItem[]? listaImmagini;
+    private ImageModel[]? listaImmagini;
 
     protected override async Task OnInitializedAsync()
     {
-        listaImmagini = await Http.GetFromJsonAsync<PicsumItem[]>("https://picsum.photos/v2/list?page=1&limit=15");
+        //listaImmagini = await Http.GetFromJsonAsync<PicsumItem[]>("https://picsum.photos/v2/list?page=1&limit=15");
+        listaImmagini = await Http.GetFromJsonAsync<ImageModel[]>("DataMisc/Gallery");
+        
     }
 
 }

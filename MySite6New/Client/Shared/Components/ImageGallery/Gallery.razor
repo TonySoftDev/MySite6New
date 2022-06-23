@@ -16,7 +16,7 @@
                 {
                     <input type="radio" name="selector" checked="checked" id="@idImg" style="opacity: 0;" @onchange="() => ClickSelector(item)"/>
                     <label for="@idImg" style="@thumbStyleSelected">
-                        <img src="@item.Download_url" alt="" />
+                        <img src="@item.Url" alt="" />
                     </label>
 
                     firstThumb = false;
@@ -27,13 +27,13 @@
                     if(item==current)
                     {
                         <label for="@idImg" style="@thumbStyleSelected">
-                            <img src="@item.Download_url" alt="" />
+                            <img src="@item.Url" alt="" />
                         </label>
                     }
                     else
                     {
                         <label for="@idImg" style="@thumbStyleNormal">
-                            <img src="@item.Download_url" alt="" />
+                            <img src="@item.Url" alt="" />
                         </label>
                     }
                 }
@@ -44,7 +44,7 @@
 </div>
 
 @code {
-    [Parameter] public PicsumItem[]? ListaImmagini { get; set; }
+    [Parameter] public ImageModel[]? ListaImmagini { get; set; }
     [Parameter] public int MaxImageWidth { get; set; } = 600;
     [Parameter] public int MaxImageHeight { get; set; } = 400;
 
@@ -53,11 +53,11 @@
     string thumbStyleNormal = string.Empty;
     string thumbStyleSelected = string.Empty;
     bool firstThumb = true;
-    PicsumItem? current = null;
+    ImageModel? current = null;
 
-    private void ClickSelector(PicsumItem item)
+    private void ClickSelector(ImageModel item)
     {
-        imgUrl = item.Download_url;
+        imgUrl = item.Url;
         current = item;
     }
 

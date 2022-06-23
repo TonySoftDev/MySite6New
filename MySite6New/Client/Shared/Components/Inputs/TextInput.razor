@@ -1,0 +1,17 @@
+﻿<div class="inputBox">
+	<input type="text" required="required" style="background-color: @BackgroundColor; color: @TextColor;">
+	<span style="color: @TextColor;">@LalbelText</span>
+</div>
+
+
+@code {
+	[Parameter] public string BackgroundColor { get; set; }
+	[Parameter] public string TextColor { get; set; }
+	[Parameter] 
+	[EditorRequired]
+	public string? LalbelText { get; set; }
+
+
+
+
+}

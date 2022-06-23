@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MySite6New.Shared;
 using MySite6New.Shared.CarouselModel;
 
 namespace MySite6New.Server.Controllers
@@ -49,6 +50,52 @@ namespace MySite6New.Server.Controllers
 
 				}
 			};
+			return data;
+		}
+
+		[HttpGet("Gallery")]
+		public IEnumerable<ImageModel> GetGalleryData()
+		{
+			List<ImageModel> data = new List<ImageModel>
+			{
+				new ImageModel
+				{
+					Id = 1015,
+					Width = 6000,
+					Height = 4000,
+					Url = "/assets/gallery/1015-6000x4000.jpg"
+				},
+				new ImageModel
+				{
+					Id = 1019,
+					Width = 5472,
+					Height = 3648,
+					Url = "/assets/gallery/1019-5472x3648.jpg"
+				},
+				new ImageModel
+				{
+					Id = 1039,
+					Width = 6945,
+					Height = 4635,
+					Url = "/assets/gallery/1039-6945x4635.jpg"
+				},
+				new ImageModel
+				{
+					Id = 1057,
+					Width = 6016,
+					Height = 4016,
+					Url = "/assets/gallery/1057-6016x4016.jpg"
+				},
+				new ImageModel
+				{
+					Id = 106,
+					Width = 2597,
+					Height = 1728,
+					Url = "/assets/gallery/106-2592x1728.jpg"
+				}
+
+			};
+
 			return data;
 		}
     }
